@@ -17,6 +17,7 @@ getName(getSurname)
 // 2nd alternative
 
 getName1 = (callback) => {
+    debugger;
     setTimeout(()=> {
         let name = "Hakan";
         callback(name)
@@ -29,6 +30,7 @@ getSurname1 = (name) => {
     },500)       
 }
 
+debugger;
 getName1(getSurname1)
 
 
