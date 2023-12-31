@@ -1,17 +1,34 @@
-// JavaScript runs as Syncronous Programing Language
+// callBack : Bir fonksiyou bir fonksiyona parametre geçerek
+// asenkron yapıyı senkrona çevirir
+// As assing parameters to another function
 
-// JavaScript as Asyncromous 
-// 1-Timings
-// 2-Events
-// 3-HTTP Requests
+getName = (callback) => {
+    setTimeout(()=> {
+        console.log("Hakan");
+        callback()
+    },1000)   
+}
+getSurname = () => {
+    setTimeout(()=>console.log("Pekkaya"),500)
+}
 
-// WEB API's
+getName(getSurname)
 
-console.log("Hakan")
+// 2nd alternative
 
-setTimeout(() => console.log("1 sec wait and run"), 1000)
-setTimeout(() => console.log("0.5 sec wait and run"), 500)
+getName1 = (callback) => {
+    setTimeout(()=> {
+        let name = "Hakan";
+        callback(name)
+    },1000)   
+}
+getSurname1 = (name) => {
+    setTimeout(()=> {
+        let surname = "Pekkaya";
+        console.log(name, surname);
+    },500)       
+}
 
+getName1(getSurname1)
 
-console.log("Kerem")
 
