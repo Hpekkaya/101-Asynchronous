@@ -7,7 +7,7 @@ function readStudents(url) {
         try {
             xhr.addEventListener("readystatechange", ()=>{
                 if(xhr.readyState===4 && xhr.status===200) {
-                    resolve(JSON.parse(xhr.responseText))
+                    resolve(JSON.parse(xhr.responseText));
                 }
             })
         } catch (error) {
@@ -20,4 +20,4 @@ function readStudents(url) {
 
 readStudents("students.json")
 .then((data)=>console.log(data))
-.catch((err)=>console.log(err))
+.catch((err)=>console.log("Error !",err))
