@@ -1,49 +1,11 @@
-// ---- promise - XMLHttpRequest
+const p1 = Promise.resolve("First promise is succesfull")
+const p2 = Promise.resolve("Second promise is succesfull")
+const p3 = new Promise((resolve, reject) => {
+    resolve("Third Promise succesfull")
+})
 
-
-function readStudents(url) {
-    return new Promise((resolve, reject)=>{
-        const xhr = new XMLHttpRequest();
-        try {
-            xhr.addEventListener("readystatechange", ()=>{
-                if(xhr.readyState===4 && xhr.status===200) {
-                    resolve(JSON.parse(xhr.responseText));
-                }
-            })
-        } catch (error) {
-            console.log("Problem in JSON !")
-            reject(error)
-        }
-        xhr.open("GET",url);
-        xhr.send();
-    })
-}
-
-// readStudents("students.json")
-// .then((data)=>console.log(data))
-// .catch((err)=>console.log("Error !",err))
-
-function getUsers(url){
-    const xhr = new XMLHttpRequest()
-    xhr.addEventListener("readystatechange", ()=> {
-        try {
-            if (xhr.readyState===4 && xhr.status===200){
-                console.log(JSON.parse(xhr.responseText))
-            }
-        } catch (error) {
-            reject(error)
-        }
-    })
-    xhr.open("GET", url);
-    xhr.send();
-}
-getUsers("https://jsonplaceholder.typicode.com/users")
-.then((data)=>console.log(data))
-.catch((err)=>console.log("Error !",err))
-.finaly(()=> ) //Write mail codes)
-
-
-
-// readStudents("students.json")
-// .then((data)=>console.log(data))
-// .catch((err)=>console.log("Error !",err))
+Promise.all([p1,p2,p3])
+.then((res)=>{
+    for(let val of res) console.log(val)
+})
+.catch()
