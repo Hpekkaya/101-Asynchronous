@@ -83,3 +83,18 @@ getUsers("https://jsonplaceholder.typicode.com/users")
 // .then((data)=>console.log(data))
 // .catch((err)=>console.log("Error !",err))
 
+// Promise.All 
+
+const p1 = Promise.resolve("First promise is succesfull")
+const p2 = Promise.resolve("Second promise is succesfull")
+const p3 = new Promise((resolve, reject) => {
+    resolve("Third Promise succesfull")
+})
+const p4 = Promise.reject("Fourth is unseccesfull")
+
+Promise.all([p1,p2,p3,p4])
+.then((res)=>{
+    for(let val of res) console.log(val)
+})
+.catch((err)=>console.log(err))
+
